@@ -7,61 +7,69 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!--Criando Barra de Navegação-->
+    <!-- Criando Barra de Navegação -->
     <nav class="navbar">
         <div class="navbar-conteiner">
-        <a href="/" class="navbar-logo">HOME</a>
-        
-        <div class="navbar-links">
+            <a href="/" class="navbar-logo">HOME</a>
+            <div class="navbar-links">
                 <a href="#">Log in</a>
                 <a href="#" class="navbar-signup-btn">SIGN UP</a>
-           </div>
-     </div>
-       
+            </div>
+        </div>
     </nav>
 
+    <!-- Slider de Imagens (7 imagens) -->
     <ul class="slider">
         <li>
-              <img src="images/1.jpg" />
+            <input type="radio" id="slide1" name="slide" checked>
+            <label for="slide1"></label>
+            <img src="Imagens do Jogo/personagem 1.jpg" alt="Imagem 1" />
         </li>
         <li>
-              <img src="images/2.jpg" />
+            <input type="radio" id="slide2" name="slide">
+            <label for="slide2"></label>
+            <img src="Imagens do Jogo/personagem 2.jpg" alt="Imagem 2" />
         </li>
         <li>
-              <img src="images/3.jpg" />
+            <input type="radio" id="slide3" name="slide">
+            <label for="slide3"></label>
+            <img src="Imagens do Jogo/personagem 3.jpg" alt="Imagem 3" />
+        </li>
+        <li>
+            <input type="radio" id="slide4" name="slide">
+            <label for="slide4"></label>
+            <img src="Imagens do Jogo/personagem 4.jpg" alt="Imagem 4" />
+        </li>
+        <li>
+            <input type="radio" id="slide5" name="slide">
+            <label for="slide5"></label>
+            <img src="Imagens do Jogo/personagem 5.jpg" alt="Imagem 5" />
+        </li>
+        <li>
+            <input type="radio" id="slide6" name="slide">
+            <label for="slide6"></label>
+            <img src="Imagens do Jogo/personagem 6.jpg" alt="Imagem 6" />
+        </li>
+        <li>
+            <input type="radio" id="slide7" name="slide">
+            <label for="slide7"></label>
+            <img src="Imagens do Jogo/personagem 7.jpg" alt="Imagem 7" />
         </li>
     </ul>
-    
-    <ul class="slider">
-        <li>
-              <input type="radio" id="slide1" name="slide" checked>
-              <label for="slide1"></label>
-              <img src="images/1.jpg" />
-        </li>
-        <li>
-              <input type="radio" id="slide2" name="slide">
-              <label for="slide2"></label>
-              <img src="images/2.jpg" />
-        </li>
-        <li>
-              <input type="radio" id="slide3" name="slide">
-              <label for="slide3"></label>
-              <img src="images/3.jpg" />
-        </li>
-    </ul>
-    <!--Criação de Banner-->
+
+    <!-- Criação de Banner -->
     <section class="banner">
         <div class="banner-container">
             <h1>História de Combat Kingdom</h1>
             <h2 class="banner-subtitle">Autor: Igor Hernandes Ferreira Da Silva</h2>
             <p>
-                Imagine um mundo onde cada escolha sua determina o futuro, onde cada batalha é uma experiência intensa e personalizada. Quer saber como é explorar cenários inacreditáveis, enfrentar inimigos desafiadores e desvendar uma história complexa e surpreendente? Não perca a chance de mergulhar fundo nesse universo! Clique no "leia mais..."" e descubra tudo sobre o jogo que está prestes a redefinir o conceito de aventura e imersão. Prepare-se para se surpreender com as funcionalidades exclusivas e veja por que esse lançamento é tão aguardado pelos fãs de ação e mistério!
+                Imagine um mundo onde cada escolha sua determina o futuro, onde cada batalha é uma experiência intensa e personalizada. Quer saber como é explorar cenários inacreditáveis, enfrentar inimigos desafiadores e desvendar uma história complexa e surpreendente? Não perca a chance de mergulhar fundo nesse universo! Clique no "leia mais..." e descubra tudo sobre o jogo que está prestes a redefinir o conceito de aventura e imersão. Prepare-se para se surpreender com as funcionalidades exclusivas e veja por que esse lançamento é tão aguardado pelos fãs de ação e mistério!
             </p>
             <a href="#" class="banner-btn">Leia mais...</a>
         </div>
     </section>
 
-    <!--Grid de Posts-->
+    <!-- Grid de Posts -->
     <section class="posts">
         <h2>Postagens Recentes</h2>
         <div class="post-grid">
@@ -72,8 +80,41 @@
             <h3>Migration to Linear 101</h3>
             <p>Linear Helps streamline</p>
             <span>06/11/2024</span>
-            
         </div>
     </section>
+
+    <!-- Adicionando o JS -->
+    <script>
+        // Função para passar de slide automaticamente
+        function nextSlide() {
+            let currentIndex = -1;
+            const slides = document.querySelectorAll('.slider input');
+
+            // Encontra o índice do slide atual
+            slides.forEach((slide, index) => {
+                if (slide.checked) {
+                    currentIndex = index;
+                }
+            });
+
+            // Calcula o próximo índice
+            let nextIndex = (currentIndex + 1) % slides.length;
+
+            // Desmarcar o slide atual e marcar o próximo
+            slides[currentIndex].checked = false;
+            slides[nextIndex].checked = true;
+        }
+
+        // Muda de slide a cada 5 segundos
+        setInterval(nextSlide, 5000);
+
+        // Para navegação manual (clicando nas bolinhas)
+        const labels = document.querySelectorAll('.slider label');
+        labels.forEach((label) => {
+            label.addEventListener('click', () => {
+                setInterval(nextSlide, 5000); // Reinicia o intervalo ao clicar
+            });
+        });
+    </script>
 </body>
 </html>
